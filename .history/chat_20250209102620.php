@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-// Inclure l' fichier de connexion à la base de donnée
+// Inclure le fichier de connexion à la base de donnée
 require_once 'connect_bdd.php';
 
 // Vérifier si l'utilisateur est connecté et mettre à jour son activité
