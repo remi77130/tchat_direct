@@ -1,5 +1,0 @@
-RewriteEngine On
-RewriteRule ^chat$ chat.php [L]
-
-  RewriteRule ^ma_page$ mon_fichier.php [L]
-

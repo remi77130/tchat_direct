@@ -1,6 +1,0 @@
-CREATE TABLE chat_messages (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    div_name VARCHAR(255) NOT NULL,
-    message TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
