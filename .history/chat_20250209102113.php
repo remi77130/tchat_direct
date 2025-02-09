@@ -18,7 +18,7 @@ if (isset($_SESSION['user'])) {
         $stmt->bind_param("s", $username);
         $stmt->execute();
 
-
+        
     } else {
         error_log("Erreur de préparation de la requête SQL : " . $conn->error);
     }
