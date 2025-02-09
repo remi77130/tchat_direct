@@ -26,7 +26,7 @@ if (isset($_SESSION['user'])) {
 
 // Vérifier que la connexion à la base de données est bien établie
 if (!$conn) {
-    die("Erreur de connexion à la base de donnéesss");
+    die("Erreur de connexion à la base de données");
 }
 
 // Récupérer uniquement les utilisateurs actifs
