@@ -1,0 +1,42 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #10102a;
+    color:white;
+}
+
+h2{
+    text-align: center;
+margin: 50px;
+}
+h3 {
+    color: white;
+    margin: 20px 0 10px;
+    padding-left: 10px;
+}
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 10px 15px;
+}
+ul {
+    margin: 10px 15px;
+}
+
+ol a{
+    text-decoration: none;
+color: #ffffff;
+text-decoration: revert-layer;
+cursor: pointer;
+font-weight: 600;
+}
+li {
+    margin: 5px 0;
+}
+.faq-section {
+    margin: 20px 15px;
+    padding: 10px;
+    border-radius: 5px;
+}

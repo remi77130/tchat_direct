@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'SF_Hollywood';
+    src: url('fonts/hollywood/SF\ Hollywood\ Hills\ Bold.ttf') format('woff2'),
+         url('fonts/hollywood/SF\ Hollywood\ Hills\ Italic.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1
+{
+    font-family: 'SF_Hollywood';
+    color: #ffbbac;
+}

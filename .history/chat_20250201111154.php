@@ -1,0 +1,90 @@
+<?php
+session_start();
+
+// Inclure le fichier de connexion à la base de données
+require_once 'connect_bdd.php';
+
+// Vérifier si l'utilisateur est connecté et mettre à jour son activité
+if (isset($_SESSION['user'])) {
+    $username = $_SESSION['user'];
+    $stmt = $conn->prepare("UPDATE users SET last_activity = NOW() WHERE username = ?");
+    if ($stmt) {
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+    } else {
+        error_log("Erreur de préparation de la requête SQL : " . $conn->error);
+    }
+}
+
+// Vérifier que la connexion à la base de données est bien établie
+if (!$conn) {
+    die("Erreur de connexion à la base de données");
+}
+
+// Récupérer uniquement les utilisateurs actifs
+$query = "SELECT username, avatar, age, department, ville_users 
+          FROM users 
+          WHERE last_activity >= NOW() - INTERVAL 5 MINUTE";
+
+$result = $conn->query($query);
+
+// Vérification des erreurs SQL
+if (!$result) {
+    die("Erreur SQL : " . $conn->error);
+}
+
+// Stocker les résultats
+$users = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $users[] = $row;
+    }
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Utilisateurs</title>
+    <link rel="stylesheet" href="style/salon.css">
+</head>
+<body>
+
+<section>
+    <div class="container_profile_parent">
+        <h2>Utilisateurs en ligne</h2>
+        <div id="user-list"></div>
+    </div>
+</section>
+
+<script>
+function refreshUsers() {
+    fetch('get_active_users.php')
+        .then(response => response.json())
+        .then(users => {
+            let userContainer = document.getElementById("user-list");
+            userContainer.innerHTML = ""; // Réinitialisation de la liste
+            users.forEach(user => {
+                userContainer.innerHTML += `
+                    <div class="user">
+                        <img src="${user.avatar}" alt="Avatar de ${user.username}">
+                        <p>${user.username} - ${user.age} ans (${user.ville_users})</p>
+                    </div>
+                `;
+            });
+        })
+        .catch(error => console.error('Erreur lors du chargement des utilisateurs:', error));
+}
+
+// Rafraîchissement toutes les 10 secondes
+setInterval(refreshUsers, 10000);
+
+// Chargement initial
+refreshUsers();
+</script>
+
+</body>
+</html>

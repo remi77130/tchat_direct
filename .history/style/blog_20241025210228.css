@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'SF_Hollywood';
+    src: url('fonts/hollywood/SF\ Hollywood\ Hills\ Bold.ttf') format('woff2'),
+         url('fonts/hollywood/SF\ Hollywood\ Hills\ Italic.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body {
+  
+    background: url('//img/favicon.png');
+    background-color: #2d3436;
+    color: aliceblue;
+
+    font-family: 'Arial', sans-serif;
+    display: block;
+    background-position-x: center;
+    background-repeat: no-repeat;
+
+
+    align-items: center;
+    height: 100vh;
+    color: aliceblue;
+
+    margin: auto;
+    width: 100vw;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+a{
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: bold;
+    text-decoration: ;
+}
+
+.h1
+{
+    font-family: "Playwrite GB S", cursive;
+    color: #ffbbac;
+
+}
+
+li
+{
+    font-family: "Playwrite GB S", cursive;
+    color: #ffbbac;
+
+}
+
+
+
