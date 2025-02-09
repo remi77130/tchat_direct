@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messagerie en Temps Réel</title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input id="message" type="text" placeholder="Tapez votre message...">
+        <button id="send">Envoyer</button>
+    </div>
+
+    <script src="\\node_modules/socket.io/client-dist/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        const messages = document.getElementById('messages');
+        const input = document.getElementById('message');
+        const button = document.getElementById('send');
+
+        button.addEventListener('click', () => {
+            const msg = input.value;
+            if (msg) {
+                socket.emit('chatMessage', msg);
+                input.value = '';
+            }
+        });
+
+        socket.on('chatMessage', (msg) => {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = msg;
+            messages.appendChild(messageElement);
+        });
+
+        // Exemple de gestion des messages privés
+        function sendPrivateMessage(recipientId, message) {
+            socket.emit('privateMessage', { to: recipientId, message: message });
+        }
+
+
+        socket.emit('privateMessage', { to: recipientId, message: msg });
+
+    </script>
+</body>
+</html>

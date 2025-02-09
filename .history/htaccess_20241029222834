@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^chat$ chat.php [L]

@@ -1,0 +1,135 @@
+html {
+    font: 400 1em/1.33 "Times New Roman";
+    background-color: #191919;
+  }
+  
+  body {
+    padding-bottom: 3em;
+  }
+  
+  .profile {
+    background: url("https://assets.codepen.io/406785/Ansel_Adams_and_camera.jpg?format=auto") center 30%;
+    box-shadow: inset 0 0 5em 1em #000;
+    height: 50vh;
+    background-size: cover;
+  }
+  
+  .profile {
+    width: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: auto;
+  }
+  
+  hr {
+    overflow: visible;
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+  }
+  
+  hr:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #cccccc;
+  }
+  
+  article {
+    color: #ccc;
+  }
+  
+  article {
+    margin-left: 50%;
+    position: relative;
+    max-width: 66em;
+  }
+  
+  header {
+    text-align: center;
+    padding: 0 2em;
+  }
+  
+  h1 {
+    text-transform: uppercase;
+    font-weight: 400;
+  
+    .headline-1,
+    .headline-2 {
+      line-height: 1;
+    }
+  
+    .headline-1 {
+      font-size: 10.5vw;
+    }
+  
+    .headline-2 {
+      font-size: 8vw;
+    }
+  }
+  
+  .subheading {
+    color: #ccc;
+    font-size: 1.5625em;
+    max-width: 25em;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 1.5em;
+  }
+  
+  section {
+    column-width: 14em;
+    column-gap: 1.33em;
+    padding: 0 3em;
+      
+    p:first-of-type:first-letter {
+    float: left;
+    font-size: 7em;
+    line-height: 1;
+    margin-top: -0.2em;
+    margin-bottom: -0.2em;
+    margin-right: 0.1em;
+    }
+  }
+  
+  img {
+    max-width: 100%;
+    margin-bottom: 1.33em;
+    vertical-align: middle;
+  }
+  
+  blockquote {
+    border-left: 0.5em solid #ccc;
+    font-size: 2em;
+    padding: 0.5em;
+    line-height: 1.5;
+    margin-left: 0;
+    margin-right: 0;
+    position: absolute;
+    right: 100%;
+    top: 70vh;
+    width: 9em;
+    background: #191919;
+  
+    &::before,
+    &::after {
+      color: #ccc;
+      font-size: 1.25em;
+      line-height: 0;
+    }
+  
+    &::before {
+      content: open-quote;
+    }
+  
+    &::after {
+      content: close-quote;
+    }
+  }

@@ -1,0 +1,4 @@
+CREATE TABLE user_divs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    div_name VARCHAR(255) NOT NULL
+);

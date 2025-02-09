@@ -1,0 +1,11 @@
+.avatar_profil
+{
+    width: 75px;
+}
+
+.textarea_profil
+{
+    border: 1px solid black;
+    max-lines: 5;
+}
+

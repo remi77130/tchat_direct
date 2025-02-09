@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/contact.css">
+    <title>Contact</title>
+</head>
+<body>
+    
+</body>
+</html>
+<section id="contact">
+  
+    <h1 class="section-header">Contact</h1>
+    
+    <div class="contact-wrapper">
+    
+    <!-- Left contact page --> 
+      
+    <form id="contact-form" class="form-horizontal" role="form" action="send_email.php" method="POST">
+      <div class="form-group">
+          <div class="col-sm-12">
+              <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="" required>
+          </div>
+      </div>
+  
+      <div class="form-group">
+          <div class="col-sm-12">
+              <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="" required>
+          </div>
+      </div>
+  
+      <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message" required></textarea>
+  
+      <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
+          <div class="alt-send-button">
+              <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
+          </div>
+      </button>
+  </form>
+      
+    <!-- Left contact page --> 
+      
+        <div class="direct-contact-container">
+  
+          <ul class="contact-list">
+            <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">Paris 61 rue Charles de Gaule</span></i></li>
+                        
+          </ul>
+  
+         
+          <hr>
+  
+          <div class="copyright">&copy; ALL OF THE RIGHTS RESERVED</div>
+  
+        </div>
+      
+    </div>
+    
+  </section>  
+
+
+  <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les valeurs des champs du formulaire
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+
+    // Adresse e-mail de destination
+    $to = "refenech@gmail.com";
+    $subject = "Nouveau message de $name";
+
+    // Corps de l'e-mail
+    $body = "Nom: $name\n";
+    $body .= "Email: $email\n\n";
+    $body .= "Message:\n$message\n";
+
+    // En-têtes de l'e-mail
+    $headers = "From: $email\r\n";
+    $headers .= "Reply-To: $email\r\n";
+
+    // Envoyer l'e-mail
+    if (mail($to, $subject, $body, $headers)) {
+        echo "Message envoyé avec succès!";
+    } else {
+        echo "Une erreur s'est produite lors de l'envoi du message.";
+    }
+}
+?>
+
+  <script>
+    document.querySelector('#contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.target.elements.name.value = '';
+    e.target.elements.email.value = '';
+    e.target.elements.message.value = '';
+  });
+
+  </script>
+    
+    
