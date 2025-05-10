@@ -23,4 +23,7 @@ if ($result && $result->num_rows > 0) { // Vérification que $result n'est pas n
 
 header('Content-Type: application/json');
 echo json_encode($users);
+
+// Optionnel : fermer la connexion
+$conn->close();
 ?>

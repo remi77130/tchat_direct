@@ -73,7 +73,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
 
     <div class="login-container">
         <div class="login-box">
-
             <form action="signup_process.php" method="post">
                 <div class="input-box">
                     <input placeholder="Pseudo" type="text" id="username" name="username" pattern="[a-zA-Z0-9_]+" required maxlength="12">
@@ -93,75 +92,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
                     <input type="radio" id="femme" name="gender" value="female">
                     <label for="femme">Femme</label>
                 </div>
- <!-- Champ pour le code postal -->
- <div class="input-box">
-        <input placeholder="Entrez votre code postal" type="text" id="zip-code" name="zip_code" required>
-        <div id="city-list" class="city-list"></div>
-    </div>
 
+                <div class="input-box">
+                    <label for="zip-code">Code postal :</label>
+                    <input type="text" id="zip-code" placeholder="Entrez un code postal">
+                    <div id="city-list" class="city-list"></div>
 
-    <!-- Champ pour la ville sélectionnée (rempli automatiquement) -->
-    <div class="input-box">
-        <input placeholder="Ville sélectionnée" type="text" id="ville" name="ville_users" readonly required>
-    </div>
+                </div>
 
-
-    <script>
-      $(document).ready(function(){
-          $('#zip-code').on('input', function(){
-              let zipCode = $(this).val();
-              
-              if(zipCode.length === 5) {  // Recherche lancée uniquement si le CP a 5 chiffres
-                  $.ajax({
-                      url: 'get_cities.php', // correspond au fichier PHP qui renvoie la liste des villes
-                      type: 'POST',
-                      data: { zip_code: zipCode },
-                      dataType: 'json',
-                      success: function(response) {
-                          $('#city-list').empty().show(); // affiche la liste
-                          if(response.length > 0){
-                              $.each(response, function(index, city){
-                                  $('#city-list').append('<div class="city-item">' + city + '</div>');
-                              });
-                          } else {
-                              $('#city-list').append('<div class="city-item">Aucune ville trouvée</div>');
-                          }
-                      },
-                      error: function(){
-                          $('#city-list').html('<div class="city-item">Erreur de chargement des villes.</div>').show();
-                      }
-                  });
-              } else {
-                  $('#city-list').hide();
-              }
-          });
-
-          // Remplir automatiquement le champ "ville" avec la ville sélectionnée
-          $(document).on('click', '.city-item', function(){
-              let city = $(this).text();
-              $('#ville').val(city);
-              $('#city-list').hide();
-          });
-      });
-    </script>
-
-
-
-<!--
-                <script> 
-                
-              $(document).ready(function(){
+                <script>
+                    $(document).ready(function(){
     $('#zip-code').on('input', function(){
         let zipCode = $(this).val();
         
-        if(zipCode.length === 5) {  // Recherche lancée uniquement si le CP a 5 chiffres
+        if(zipCode.length === 5) {  // On lance la recherche uniquement si le CP a 5 chiffres
             $.ajax({
-                url: 'get_cities.php', // correspond au fichier PHP
+                url: 'getCities.php', // Script PHP qui renvoie les villes
                 type: 'POST',
                 data: { zip_code: zipCode },
                 dataType: 'json',
                 success: function(response) {
-                    $('#city-list').empty().show(); // affiche la liste
+                    $('#city-list').empty().show(); // Affiche la liste
                     if(response.length > 0){
                         $.each(response, function(index, city){
                             $('#city-list').append('<div class="city-item">' + city + '</div>');
@@ -169,9 +120,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
                     } else {
                         $('#city-list').append('<div class="city-item">Aucune ville trouvée</div>');
                     }
-                },
-                error: function(){
-                    $('#city-list').html('<div class="city-item">Erreur de chargement des villes.</div>').show();
                 }
             });
         } else {
@@ -186,11 +134,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
     });
 });
 
-
                 </script>
 
          
--->
+
                 <button type="submit" class="btn-submit">Submit</button>
             </form>
         </div>

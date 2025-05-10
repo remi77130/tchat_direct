@@ -9,7 +9,7 @@ if (!$conn) {
 // Requête pour récupérer uniquement les utilisateurs actifs
 $query = "SELECT *
           FROM users 
-          WHERE last_activity >= NOW() - INTERVAL 5 MINUTE";
+          WHERE last_activity >= NOW() - INTERVAL 1 MINUTE";
 
 $result = $conn->query($query);
 
