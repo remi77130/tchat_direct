@@ -69,7 +69,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
             Pas de blabla, un pseudo un tchat c'est tout pour le moment...
         </p>
     </div>
-
+<a href="scan.php">scan</a>
 
     <div class="login-container">
         <div class="login-box">
