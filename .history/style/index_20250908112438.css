@@ -111,13 +111,11 @@ button:hover {
         .city-item {
             padding: 5px;
             cursor: pointer;
-            font-weight: 600;
-
         }
         .city-item:hover {
             background-color: #ffbcac;
             border-radius: 5px ;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.347);
+            box-shadow: 5px 5px 10px black;
         }
 
 
@@ -161,11 +159,12 @@ button:hover {
 .input-box input {
     width: 100%;
     padding: 10px;
+    background-color: #2b2c4a;
     border: none;
     outline: none;
+    color: #fff;
     border-radius: 5px;
     font-size: 16px;
-    font-weight: 600;
 }
 
 .input-box label {
