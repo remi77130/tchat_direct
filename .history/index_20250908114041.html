@@ -65,13 +65,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
                 </div>
                 <div class="input-box">
                     <input type="file" id="avatar" name="avatar" accept="image/jpeg, image/png, image/gif">
-                    
-
                     <!-- Aperçu de l'image -->
 <div id="avatar-preview-container" style="display: none; margin-top: 10px;">
     <p style="margin-bottom: 5px;">Aperçu de l’avatar :</p>
     <img id="avatar-preview" src="" alt="Aperçu de l'avatar" style="max-width: 100px; border-radius: 10px; border: 1px solid #ccc;">
 </div>
+
 
                     <div>
                         <input placeholder="Age" type="number" id="age" name="age" required>
@@ -303,25 +302,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
         <a href="blog.php">Blog</a>
     </footer>
 
-<script>
-  document.getElementById('avatar').addEventListener('change', function(event) {
-    const previewContainer = document.getElementById('avatar-preview-container');
-    const previewImage = document.getElementById('avatar-preview');
-    const file = event.target.files[0];
-
-    if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            previewImage.src = e.target.result;
-            previewContainer.style.display = 'block';
-        }
-        reader.readAsDataURL(file);
-    } else {
-        previewImage.src = '';
-        previewContainer.style.display = 'none';
-    }
-  });
-</script>
 
 </body>
 </html>
