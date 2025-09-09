@@ -2,8 +2,6 @@
 require 'connect_bdd.php';
 session_start();
 
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération et sécurisation des données POST
     $username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '';
@@ -13,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ici, on utilise "ville_users" comme nom de variable pour la ville
     $ville = isset($_POST['ville_users']) ? htmlspecialchars($_POST['ville_users']) : '';
 
-    // Validation des données
+    // Validation des données 
     if (strlen($username) < 3 || strlen($username) > 120) {
         die("Ton pseudo doit contenir entre 3 et 120 caractères.");
     }

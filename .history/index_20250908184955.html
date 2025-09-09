@@ -42,131 +42,153 @@
     </head>
     <body >
 
-  <!-- Header -->
-  <div class="title_index">
-    <h1 class="title">tchat direct</h1>
-    <p>Le premier live server tchat.<br>Pas de blabla, un pseudo un tchat c'est tout pour le moment…</p>
-  </div>
-  <a href="scan.html">scan</a>
-
-  <!-- Formulaire -->
-  <div class="login-container">
-    <div class="login-box">
-      <form id="tchatForm" action="signup_process.php" method="post" enctype="multipart/form-data">
-        <!-- Pseudo -->
-        <div class="input-box">
-          <input placeholder="Pseudo" type="text" id="username" name="username" pattern="[a-zA-Z0-9_]+" maxlength="12" required>
-        </div>
-
-        <!-- Avatar (séparé) -->
-        <div class="input-box">
-          <input type="file" id="avatar" name="avatar" accept="image/jpeg,image/png,image/gif">
-        </div>
-
-        <!-- Aperçu avatar -->
-        <div id="avatar-preview-container" style="display:none; margin-top:10px;">
-          <p style="margin-bottom:5px;">Aperçu de l’avatar :</p>
-          <img id="avatar-preview" src="" alt="Aperçu de l'avatar" style="max-width:80px; border-radius:10px; border:1px solid #2b3443;">
-        </div>
-
-        <!-- Âge (désormais dans son propre bloc) -->
-        <div class="input-box">
-          <input placeholder="Âge" type="number" id="age" name="age" min="18" max="99" required>
-        </div>
-
-        <!-- Sexe (garde name/value compat. backend: male/female) -->
-        <label class="section-label">Sexe</label>
-        <div class="segment" style="margin-bottom:14px;">
-          <input type="radio" id="homme" name="gender" value="male" checked>
-          <label for="homme">Homme</label>
-          <input type="radio" id="femme" name="gender" value="female">
-          <label for="femme">Femme</label>
-        </div>
-
-        <!-- Code postal -->
-        <div class="input-box">
-          <input
-            placeholder="Entrez votre code postal (ex. 75001)"
-            type="text"
-            id="zip-code"
-            name="zip_code"
-            inputmode="numeric"
-            pattern="[0-9]{5}"
-            maxlength="5"
-            required
-          >
-          <div id="city-list" class="city-list"></div>
-        </div>
-
-        <!-- Ville (remplie via la liste) -->
-        <div class="input-box">
-          <input placeholder="Ville sélectionnée" type="text" id="ville" name="ville_users" readonly required>
-        </div>
-
-        <button type="submit" class="btn-submit">Submit</button>
-      </form>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRBFLTW8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="title_index">
+        <h1 class="title">tchat direct</h1>
+        <p>
+            Le premier live server tchat. <br> 
+            Pas de blabla, un pseudo un tchat c'est tout pour le moment...
+        </p>
     </div>
-  </div>
+<a href="scan.html">scan</a>
 
-  <!-- (Tes blocs de texte/SEO, footer, etc. peuvent rester ici tels quels si tu en avais) -->
+    <div class="login-container">
+        <div class="login-box">
 
-  <!-- Script unique : avatar preview + CP 5 chiffres + liste villes -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // --- Aperçu avatar ---
-    const avatarInput = document.getElementById('avatar');
-    const previewBox  = document.getElementById('avatar-preview-container');
-    const previewImg  = document.getElementById('avatar-preview');
+            <form action="signup_process.php" method="post" enctype="multipart/form-data">
+                <div class="input-box">
+                    <input placeholder="Pseudo" type="text" id="username" name="username" pattern="[a-zA-Z0-9_]+" required maxlength="12">
+                </div>
+                <div class="input-box">
+                    <input type="file" id="avatar" name="avatar" accept="image/jpeg, image/png, image/gif">
+                    <!-- Aperçu de l'image -->
+<div id="avatar-preview-container" style="display: none; margin-top: 10px;">
+    <p style="margin-bottom: 5px;">Aperçu de l’avatar :</p>
+    <img id="avatar-preview" src="" alt="Aperçu de l'avatar" style="max-width: 100px; border-radius: 10px; border: 1px solid #ccc;">
+</div>
 
-    avatarInput?.addEventListener('change', function (e) {
-      const file = e.target.files && e.target.files[0];
-      if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = ev => { previewImg.src = ev.target.result; previewBox.style.display = 'block'; };
-        reader.readAsDataURL(file);
-      } else {
-        previewImg.src = ''; previewBox.style.display = 'none';
-      }
-    });
 
-    // --- Code postal : 5 chiffres max en live ---
-    const cp = document.getElementById('zip-code');
-    const sanitizeCP = () => { cp.value = (cp.value || '').replace(/\D+/g, '').slice(0, 5); };
-    cp?.addEventListener('input', sanitizeCP);
-    sanitizeCP();
+                    <div>
+                        <input placeholder="Age" type="number" id="age" name="age" required>
+                    </div>
+                </div> <!-- Fermeture ajoutée ici -->
 
-    // --- Liste des villes via AJAX (affiche/sélectionne) ---
+                <label class="section-label">Sexe</label>
+<div class="segment">
+  <input type="radio" id="homme" name="gender" value="male" checked>
+  <label for="homme">Homme</label>
+
+  <input type="radio" id="femme" name="gender" value="female">
+  <label for="femme">Femme</label>
+</div>
+
+ <!-- Champ pour le code postal -->
+ <div class="input-box">
+        <input placeholder="Entrez votre code postal" type="text" id="zip-code" name="zip_code" required>
+        <div id="city-list" class="city-list"></div>
+    </div>
+
+
+    <!-- Champ pour la ville sélectionnée (rempli automatiquement) -->
+    <div class="input-box">
+        <input placeholder="Ville sélectionnée" type="text" id="ville" name="ville_users" readonly required>
+    </div>
+
+
+    <script>
+      $(document).ready(function(){
+          $('#zip-code').on('input', function(){
+              let zipCode = $(this).val();
+              
+              if(zipCode.length === 5) {  // Recherche lancée uniquement si le CP a 5 chiffres
+                  $.ajax({
+                      url: 'get_cities.php', // correspond au fichier PHP qui renvoie la liste des villes
+                      type: 'POST',
+                      data: { zip_code: zipCode },
+                      dataType: 'json',
+                      success: function(response) {
+                          $('#city-list').empty().show(); // affiche la liste
+                          if(response.length > 0){
+                              $.each(response, function(index, city){
+                                  $('#city-list').append('<div class="city-item">' + city + '</div>');
+                              });
+                          } else {
+                              $('#city-list').append('<div class="city-item">Aucune ville trouvée</div>');
+                          }
+                      },
+                      error: function(){
+                          $('#city-list').html('<div class="city-item">Erreur de chargement des villes.</div>').show();
+                      }
+                  });
+              } else {
+                  $('#city-list').hide();
+              }
+          });
+
+          // Remplir automatiquement le champ "ville" avec la ville sélectionnée
+          $(document).on('click', '.city-item', function(){
+              let city = $(this).text();
+              $('#ville').val(city);
+              $('#city-list').hide();
+          });
+      });
+    </script>
+
+
+
+<!--
+                <script> 
+                
+              $(document).ready(function(){
     $('#zip-code').on('input', function(){
-      const zip = $(this).val();
-      if(zip.length === 5){
-        $.ajax({
-          url: 'get_cities.php',
-          type: 'POST',
-          data: { zip_code: zip },
-          dataType: 'json',
-          success: function(res){
-            const $list = $('#city-list').empty().show();
-            if(Array.isArray(res) && res.length){
-              res.forEach(city => $list.append('<div class="city-item">'+ city +'</div>'));
-            }else{
-              $list.append('<div class="city-item">Aucune ville trouvée</div>');
-            }
-          },
-          error: function(){
-            $('#city-list').html('<div class="city-item">Erreur de chargement des villes.</div>').show();
-          }
-        });
-      } else {
-        $('#city-list').hide();
-      }
+        let zipCode = $(this).val();
+        
+        if(zipCode.length === 5) {  // Recherche lancée uniquement si le CP a 5 chiffres
+            $.ajax({
+                url: 'get_cities.php', // correspond au fichier PHP
+                type: 'POST',
+                data: { zip_code: zipCode },
+                dataType: 'json',
+                success: function(response) {
+                    $('#city-list').empty().show(); // affiche la liste
+                    if(response.length > 0){
+                        $.each(response, function(index, city){
+                            $('#city-list').append('<div class="city-item">' + city + '</div>');
+                        });
+                    } else {
+                        $('#city-list').append('<div class="city-item">Aucune ville trouvée</div>');
+                    }
+                },
+                error: function(){
+                    $('#city-list').html('<div class="city-item">Erreur de chargement des villes.</div>').show();
+                }
+            });
+        } else {
+            $('#city-list').hide();
+        }
     });
 
+    // Remplir automatiquement le champ avec la ville sélectionnée
     $(document).on('click', '.city-item', function(){
-      $('#ville').val($(this).text());
-      $('#city-list').hide();
+        $('#zip-code').val($(this).text());
+        $('#city-list').hide();
     });
-  });
-  </script>
+});
+
+
+                </script>
+
+         
+-->
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
     <div class="text_index">
         <h3>tchat direct</h3> <br>
         <p>

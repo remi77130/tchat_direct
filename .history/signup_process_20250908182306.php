@@ -1,9 +1,42 @@
 <?php
 require 'connect_bdd.php';
 session_start();
+$rawGender = $_POST['gender'] ?? $_POST['sexe'] ?? $_POST['genre'] ?? null;
 
+// Si rien reçu -> erreur claire
+if ($rawGender === null) {
+    http_response_code(400);
+    exit('Genre invalide.'); // ou "Genre manquant."
+}
 
+// Normalise (minuscule, sans accents)
+$g = mb_strtolower(trim($rawGender), 'UTF-8');
+$g = strtr($g, [
+    'à'=>'a','â'=>'a','ä'=>'a',
+    'é'=>'e','è'=>'e','ê'=>'e','ë'=>'e',
+    'î'=>'i','ï'=>'i',
+    'ô'=>'o','ö'=>'o',
+    'ù'=>'u','û'=>'u','ü'=>'u',
+    'ç'=>'c'
+]);
 
+// Map des synonymes -> valeur canonique
+$map = [
+    'homme'   => 'homme', 'h' => 'homme', 'masculin' => 'homme',
+    'male'    => 'homme', 'm' => 'homme', 'man' => 'homme',
+    'femme'   => 'femme', 'f' => 'femme', 'feminin' => 'femme',
+    'feminin.'=> 'femme', 'femelle' => 'femme', 'female' => 'femme',
+    'woman'   => 'femme', 'w' => 'femme'
+];
+
+// Valeur finale
+if (!isset($map[$g])) {
+    http_response_code(400);
+    exit('Genre invalide.');
+}
+$gender = $map[$g];
+
+// À partir d’ici, utilise $gender == 'homme' ou 'femme'
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération et sécurisation des données POST
     $username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '';
