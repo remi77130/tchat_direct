@@ -6,10 +6,6 @@ require_once 'connect_bdd.php'; // $conn = new mysqli(...);
 // Présence : un user reste visible tant que le ping tourne, puis disparaît après $TTL_MIN = 2 min s’il part.
 
 // Charge serveur : rafraîchissement toutes les 5 s.
-//Le délai d’affichage après départ = $TTL_MIN
-
-//La fréquence d’appel = le setInterval(refreshUsers, 5000) (JS de chat.php).
-
 
 /* ------------------------------
    Config présence

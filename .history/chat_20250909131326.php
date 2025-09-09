@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 session_start();
 require_once 'connect_bdd.php';
 
@@ -10,7 +12,7 @@ if (isset($_GET['ajax']) && $_GET['ajax'] == 1) {
     }
     
     // Récupérer les utilisateurs dont l'activité remonte aux 5 dernières minutes
-    $query = "SELECT * FROM users WHERE last_activity >= NOW() - INTERVAL 5 MINUTE";
+    $query = "SELECT * FROM users WHERE last_activity >= NOW() - INTERVAL 1 MINUTE";
     $result = $conn->query($query);
 
     if (!$result) {

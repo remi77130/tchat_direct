@@ -1,0 +1,20 @@
+{
+    "laura": {
+        "username": "laura",
+        "gender": "female",
+        "age": 29,
+        "zip_code": "91100",
+        "ville": "corbeil essonnes",
+        "avatar": "uploads\/avatar_default.jpg",
+        "last_seen": 1757415465
+    },
+    "max": {
+        "username": "max",
+        "gender": "male",
+        "age": 32,
+        "zip_code": "77130",
+        "ville": "varennes sur seine",
+        "avatar": "uploads\/avatar_default.jpg",
+        "last_seen": 1757415521
+    }
+}
